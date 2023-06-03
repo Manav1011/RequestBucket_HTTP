@@ -1,4 +1,4 @@
-### React in Django directly without creating a separate react app
+### React in Django directly without creating a separate react app (NO NEED TO HOST)
 
 ```javascript
 npm init -y
