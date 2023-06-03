@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import SignupView,CustomLoginView,WelcomeView
+from .views import default_view,get_cookies
+from django.conf import settings
+from django.conf.urls.static import static
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('signup/', SignupView.as_view(), name='signup'),
-    path('login/', CustomLoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('welcome/', WelcomeView.as_view(template_name='welcome.html'), name='welcome'),
-]
+urlpatterns = [    
+    path('admin/', admin.site.urls),    
+    path('', default_view, name="default_view"),    
+    path('get_cookies', get_cookies, name="get_cookies"),    
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
